@@ -1,0 +1,293 @@
+{
+  "settings": {
+    "authorName": "Ritu Gupta Garg",
+    "descriptor": "Author · Poet · Songwriter · Translator",
+    "heroStatement": "through darkness,\nto one's own light.",
+    "heroIntro": "I weave words across languages and cultures, exploring identity, heritage, and the quiet moments that shape a life.",
+    "profileImage": "/gallery/portrait.jpg",
+    "announcement": "",
+    "announcementActive": false,
+    "ctaPrimaryLabel": "Read the poems",
+    "ctaPrimaryHref": "/poetry",
+    "ctaSecondaryLabel": "The books",
+    "ctaSecondaryHref": "/books",
+    "currentlyWriting": "A country of trees",
+    "currentlyReading": "Between Hindi and English",
+    "currentlyListening": "Ram Lalla",
+    "currentlyPublishing": "On Substack",
+    "poetryHeading": "saying what\ncannot be said.",
+    "writingHeading": "Letters from\nthe longer road.",
+    "listenHeading": "Listen with me",
+    "listenSubheading": "Some words are better heard.",
+    "elsewhereHeading": "Find me elsewhere.",
+    "aboutTeaser": "A poet, translator, and educator, writing in the space between languages — tea, memory, and the stone mill of making something from a life.",
+    "aboutHeading": "A poet between\nlanguages.",
+    "aboutLede": "I am Ritu Gupta Garg, a poet, translator, and educator who finds beauty in the spaces between languages and cultures.",
+    "aboutImage": "/gallery/library.jpg",
+    "aboutSections": [
+      {
+        "id": "sec-who",
+        "title": "Who I am",
+        "body": "My work is deeply influenced by my heritage, my experiences of migration, and the quiet rituals of everyday life.\n\nBorn in India and having lived across continents, I write at the intersection of multiple identities. My poetry explores belonging, displacement, memory, and the tender moments that connect us — a cup of tea shared with a loved one, the turning of a stone mill, the rustle of leaves in a forgotten garden."
+      },
+      {
+        "id": "sec-writing",
+        "title": "The writing",
+        "body": "I write poems, songs, and longer notes. The poems look at identity, language, and the things a family keeps. The longer pieces, on Substack, move from a room or a road toward something quieter.\n\nPoetry is the shortest bridge from the mundane to the spiritual. One has to go through darkness to discover one's own light."
+      },
+      {
+        "id": "sec-books",
+        "title": "Books",
+        "body": "Mere Hisse ki Shyaahi (2022) is a personal collection of poems — unspoken emotions, quiet thoughts, and the stories carried within.\n\nThe Dance of the Poltergeists (2025) moves through the unseen, where presence feels uncertain and silence has a sound."
+      },
+      {
+        "id": "sec-translation",
+        "title": "Translation",
+        "body": "As a translator, I believe language can build bridges. My work brings voices from South Asian literature toward English readers, and the other way, keeping the nuances that make each language its own."
+      },
+      {
+        "id": "sec-teaching",
+        "title": "Teaching",
+        "body": "Through teaching I share poetry and translation with students of all ages. Everyone has a story worth telling, and I am glad to help someone find a voice."
+      },
+      {
+        "id": "sec-name",
+        "title": "Tea, woke, chakki",
+        "body": "The name teapoet.ritu_woke.chakki tells a story of its own. Tea is the quiet ritual. Woke is an engagement with what is happening now. Chakki — the stone mill — is the slow work of taking a raw life and grinding it into something that can be shared."
+      }
+    ],
+    "aboutQuotes": [
+      {
+        "id": "q-poetry",
+        "text": "Poetry is the art of saying what cannot be said, translating silence into song, and making the invisible visible.",
+        "attribution": "Ritu Gupta Garg"
+      },
+      {
+        "id": "q-life",
+        "text": "What life rejects, poetry accepts.",
+        "attribution": "Ritu Gupta Garg"
+      }
+    ],
+    "contactHeading": "Have something to say?",
+    "contactIntro": "For readers, publishers, collaborations, or a reading — write as you would to a person. I read every note.",
+    "booksIntro": "Each page holds a piece of silence, a fragment of truth, and a story untold.",
+    "poetryIntro": "for the things\nthat needed words.",
+    "writingIntro": "Poetry is the shortest bridge from the mundane to the spiritual.",
+    "listenIntro": "Songs, and whatever is worth hearing twice.",
+    "linksIntro": "The other rooms.",
+    "closingStatement": "The shortest bridge\nis a poem.",
+    "footerLine": "Poet, translator, educator. Words across languages.",
+    "email": "Ritygarg72@gmail.com",
+    "substackUrl": "https://rituguptagarg.substack.com",
+    "spotifyProfileUrl": "https://open.spotify.com/track/0QnoGoSrG1OgGJL3R3Bra9",
+    "metaDescription": "Poems, books, songs, and longer writing by Ritu Gupta Garg.",
+    "featuredBookId": "33333333-3333-4333-8333-333333333333",
+    "featuredPoemId": "44444444-4444-4444-8444-444444444444",
+    "featuredWritingId": "88888888-8888-4888-8888-888888888888",
+    "featuredAudioId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "updatedAt": "2026-09-29T11:20:00.000Z"
+  },
+  "books": [
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "title": "Mere Hisse ki Shyaahi",
+      "subtitle": "Poetry of emotion and inner voice",
+      "slug": "mere-hisse-ki-shyaahi",
+      "coverImage": "/gallery/shyaahi-cover.png",
+      "description": "A personal collection of poems that captures unspoken emotions, quiet thoughts, and the stories we carry within. Through simple verses, these pages reflect on pain, love, and self-discovery — written in the ink of one's own truth.",
+      "authorNote": "Not just poetry. A reflection of feelings that often remain hidden.",
+      "year": 2022,
+      "publisher": "",
+      "isbn": "",
+      "amazonUrl": "https://www.amazon.in/-/hi/Ritu-Gupta-Garg/dp/8119512995",
+      "purchaseLinks": [],
+      "featured": true,
+      "published": true,
+      "displayOrder": 1,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "title": "The Dance of the Poltergeists",
+      "subtitle": "A dance between presence and absence",
+      "slug": "the-dance-of-the-poltergeists",
+      "coverImage": "/gallery/dance-of-the-poltergeists.jpg",
+      "description": "This collection drifts through the unseen — where whispers echo, presence feels uncertain, and reality begins to blur. Through dark, evocative verses, it captures the tension between what is real and what is sensed.",
+      "authorNote": "These poems are disturbances, lingering in the spaces we try not to notice.",
+      "year": 2025,
+      "publisher": "",
+      "isbn": "",
+      "amazonUrl": "https://www.amazon.in/dance-poltergeists-unfulfilled-dreams-unfounded/dp/9369547517",
+      "purchaseLinks": [],
+      "featured": false,
+      "published": true,
+      "displayOrder": 2,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    }
+  ],
+  "poems": [
+    {
+      "id": "44444444-4444-4444-8444-444444444444",
+      "title": "Words That Speak Beyond Silence",
+      "slug": "words-that-speak-beyond-silence",
+      "body": "In the world of words, there lives a unique identity—\nRitu Gupta Garg… not just a name, but a beautiful expression.\n\nEvery line carries the depth of emotions,\nEvery poem unfolds a story untold.\n\nAt times, she gives voice to silent pain,\nAt times, she paints joy in the colors of words.\n\nEach phrase born from her pen\nKnows the way straight to the heart.\n\nThis website is not just a platform,\nBut a graceful world of feelings—\nWhere every word holds truth,\nAnd every poem feels alive.",
+      "date": "2026-03-23",
+      "category": "",
+      "bookId": "",
+      "featured": true,
+      "published": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    },
+    {
+      "id": "55555555-5555-4555-8555-555555555555",
+      "title": "Whispers in the Tea Garden",
+      "slug": "whispers-in-the-tea-garden",
+      "body": "Among the rustling leaves of green\nWhere morning light breaks through unseen\nI find the words I cannot speak\nIn every breath, the truth I seek",
+      "date": "",
+      "category": "Nature & Reflection",
+      "bookId": "",
+      "featured": false,
+      "published": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    },
+    {
+      "id": "66666666-6666-4666-8666-666666666666",
+      "title": "The Weight of Words",
+      "slug": "the-weight-of-words",
+      "body": "Each syllable a feather falls\nUpon the silence of these walls\nTranslation is a tender art\nOf bridging minds and touching hearts",
+      "date": "",
+      "category": "Identity & Language",
+      "bookId": "",
+      "featured": false,
+      "published": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    },
+    {
+      "id": "77777777-7777-4777-8777-777777777777",
+      "title": "Chakki Dreams",
+      "slug": "chakki-dreams",
+      "body": "The old stone mill turns round and round\nWith ancient rhythm, ancient sound\nMy grandmother's hands, so wise and worn\nGround stories into every morn",
+      "date": "",
+      "category": "Heritage & Memory",
+      "bookId": "",
+      "featured": false,
+      "published": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    }
+  ],
+  "writings": [
+    {
+      "id": "88888888-8888-4888-8888-888888888888",
+      "title": "A Coun-trees",
+      "slug": "a-coun-trees",
+      "excerpt": "A country of trees. At Wah Lodge, Kandbari, the spartan quiet unwinds an overworked life and makes you feel like one of the trees.",
+      "content": "Wah Lodge at Kandbari, Palampur offers a rare mix of grounding and centering to the overstimulated energies of the mind, body, and soul. Its spiritual appeal lies in offering the luxury of austere living.\n\nIt was a homestay, but became a home — a hammock, as if one end is tied to a mountain peak and the other to the root of a tall pine.\n\nTrees were a poetree. The deodar and cedar, the pine — tall vertical roads between sky and earth.",
+      "coverImage": "",
+      "date": "2026-06-18",
+      "category": "Substack",
+      "externalUrl": "https://rituguptagarg.substack.com/p/a-place-a-coun-tree",
+      "bookId": "",
+      "featured": true,
+      "published": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    },
+    {
+      "id": "99999999-9999-4999-8999-999999999999",
+      "title": "Kenopsia",
+      "slug": "kenopsia",
+      "excerpt": "Kenopsia is a painful joy sometimes, and other times a longing — the quiet of a fort, not the quiet of a spa.",
+      "content": "Kenopsia is a painful joy sometimes, and other times a desirable element, a longing even, to be part of something that has already gone.\n\nAfter a grand wedding at Taj Aravalis, and stays at Rohet Garh and a palace at Mount Abu, the empty royal corridors felt less sepulchral than cultural — a quiet pregnant with the sound of gallops.",
+      "coverImage": "",
+      "date": "2026-02-06",
+      "category": "Substack",
+      "externalUrl": "https://rituguptagarg.substack.com/p/kenopsia",
+      "bookId": "",
+      "featured": false,
+      "published": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    }
+  ],
+  "audio": [
+    {
+      "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "title": "Ram Lalla",
+      "slug": "ram-lalla",
+      "description": "A song on Spotify.",
+      "spotifyUrl": "https://open.spotify.com/track/0QnoGoSrG1OgGJL3R3Bra9",
+      "coverImage": "/uploads/ram-lalla.jpg",
+      "type": "Song",
+      "featured": true,
+      "published": true,
+      "displayOrder": 1,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    }
+  ],
+  "links": [
+    {
+      "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb1",
+      "title": "Substack",
+      "url": "https://rituguptagarg.substack.com",
+      "icon": "",
+      "description": "Letters and poems",
+      "displayOrder": 1,
+      "active": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    },
+    {
+      "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb2",
+      "title": "Spotify",
+      "url": "https://open.spotify.com/track/0QnoGoSrG1OgGJL3R3Bra9",
+      "icon": "",
+      "description": "Ram Lalla",
+      "displayOrder": 2,
+      "active": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    },
+    {
+      "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb3",
+      "title": "Instagram",
+      "url": "https://www.instagram.com/teapoet.ritu_woke.chakki",
+      "icon": "",
+      "description": "teapoet.ritu_woke.chakki",
+      "displayOrder": 3,
+      "active": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    },
+    {
+      "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb4",
+      "title": "WhatsApp",
+      "url": "https://wa.me/919820249561",
+      "icon": "",
+      "description": "+91 98202 49561",
+      "displayOrder": 4,
+      "active": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    },
+    {
+      "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb5",
+      "title": "Linktree",
+      "url": "https://linktr.ee/Ritu_gupta.a",
+      "icon": "",
+      "description": "Every door in one place",
+      "displayOrder": 5,
+      "active": true,
+      "createdAt": "2026-09-29T11:20:00.000Z",
+      "updatedAt": "2026-09-29T11:20:00.000Z"
+    }
+  ],
+  "media": [],
+  "messages": []
+}
