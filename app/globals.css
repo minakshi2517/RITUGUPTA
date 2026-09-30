@@ -346,14 +346,128 @@ body::before {
   align-self: start;
   margin-top: 0.5rem;
   padding: 1.75rem 1.6rem 1.5rem;
-  background: #f7f4ec;
-  border: 1px solid rgba(22, 19, 15, 0.14);
+  background: #d7e4d6;
+  color: #1c3328;
+  border: 0;
+}
+
+.substack-card .label {
+  color: #3d5a4c;
+}
+
+.substack-card .arrow-link {
+  color: #1c3328;
 }
 
 @media (min-width: 1024px) {
   .substack-card {
     margin-top: 5.5rem;
   }
+}
+
+.clip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
+  gap: 4.25rem 1.15rem;
+  margin-top: 4.5rem;
+}
+
+.clip-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 16.5rem;
+  padding: 5.5rem 1.15rem 1.4rem;
+  text-align: center;
+  transition: transform 0.45s var(--ease);
+}
+
+.clip-card:hover {
+  transform: translateY(-6px);
+}
+
+.clip-photo {
+  position: absolute;
+  top: -2.4rem;
+  left: 50%;
+  width: 6.4rem;
+  padding: 0.35rem 0.35rem 1.15rem;
+  background: #fffdf8;
+  box-shadow: 0 10px 22px rgba(20, 18, 16, 0.14);
+}
+
+.clip-photo.tilt-left {
+  transform: translateX(-50%) rotate(-7deg);
+}
+
+.clip-photo.tilt-right {
+  transform: translateX(-50%) rotate(6deg);
+}
+
+.clip-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.clip-tape {
+  position: absolute;
+  top: -0.45rem;
+  left: 50%;
+  width: 2.1rem;
+  height: 0.85rem;
+  background: rgba(246, 236, 196, 0.88);
+  box-shadow: 0 1px 2px rgba(20, 18, 16, 0.12);
+  transform: translateX(-50%) rotate(-8deg);
+}
+
+.clip-title {
+  font-family: var(--font-serif), serif;
+  font-size: 1.85rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.clip-note {
+  margin-top: 0.7rem;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+
+.clip-go {
+  margin-top: auto;
+  padding-top: 1.2rem;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.currently {
+  gap: 0.85rem !important;
+}
+
+.currently > div {
+  padding: 1.15rem 1.05rem 1.25rem;
+}
+
+.currently > div:nth-child(1) {
+  background: #ead7c8;
+}
+
+.currently > div:nth-child(2) {
+  background: #d7e4d6;
+}
+
+.currently > div:nth-child(3) {
+  background: #d4dde8;
+}
+
+.currently > div:nth-child(4) {
+  background: #e4d4dc;
 }
 
 .book-shelf {

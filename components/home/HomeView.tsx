@@ -3,6 +3,7 @@ import type { AudioItem, Book, ExternalLink, Poem, SiteSettings, Writing } from 
 import type { SubstackPost } from "@/lib/substack";
 import { formatDate, linkRel, pickSelected } from "@/lib/utils";
 import { ArrowLink } from "@/components/site/ArrowLink";
+import { ClipCards } from "@/components/site/ClipCards";
 import { Cover } from "@/components/site/Cover";
 import { Lines } from "@/components/site/Lines";
 import { Portrait } from "@/components/site/Portrait";
@@ -70,8 +71,8 @@ export function HomeView({
             ["Reading", settings.currentlyReading],
             ["Listening", settings.currentlyListening],
             ["Publishing", settings.currentlyPublishing],
-          ].map(([label, value], index) => (
-            <div key={label} className={index === 0 ? "" : "lg:border-l lg:border-line lg:pl-6"}>
+          ].map(([label, value]) => (
+            <div key={label}>
               <dt>{label}</dt>
               <dd>{value || "—"}</dd>
             </div>
@@ -263,17 +264,7 @@ export function HomeView({
           <h2 className="section-title mt-4 max-w-3xl">
             <Lines text={settings.elsewhereHeading} italicLast />
           </h2>
-          <div className="mt-10">
-            {links.map((link) => (
-              <a key={link.id} href={link.url} className="index-row" {...linkRel(link.url)}>
-                <span className="font-serif text-3xl tracking-tight md:text-4xl">{link.title}</span>
-                <span className="hidden text-ink-soft md:block">{link.description}</span>
-                <span className="arrow" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            ))}
-          </div>
+          <ClipCards links={links} />
         </section>
       ) : null}
 
