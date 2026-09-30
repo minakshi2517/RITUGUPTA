@@ -1177,7 +1177,18 @@ body::before {
   z-index: 1;
   width: min(1360px, calc(100% - 1.75rem));
   margin: 0 auto;
-  padding: 3.35rem 0 2.75rem;
+  padding: 1.5rem 0 2.75rem;
+}
+
+.line-scene-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.line-row {
+  position: relative;
+  padding-top: 2.85rem;
 }
 
 .line-rope-curve {
@@ -1387,9 +1398,9 @@ body::before {
 }
 
 @media (max-width: 1024px) {
-  .line-hangers,
-  .line-hangers-3,
-  .line-hangers-4 {
+  .line-row .line-hangers,
+  .line-row .line-hangers-3,
+  .line-row .line-hangers-4 {
     display: flex;
     gap: 1rem;
     overflow-x: auto;
@@ -1399,17 +1410,22 @@ body::before {
     -webkit-overflow-scrolling: touch;
   }
 
-  .line-note {
+  .line-row .line-hangers-1,
+  .line-row .line-hangers-2 {
+    display: grid;
+  }
+
+  .line-row .line-note {
     min-width: 15.5rem;
     max-width: 15.5rem;
     scroll-snap-align: start;
   }
 
-  .line-scene-inner {
-    padding-top: 2.5rem;
+  .line-row {
+    padding-top: 2.25rem;
   }
 
-  .line-rope-curve {
+  .line-row .line-rope-curve {
     top: 1.6rem;
     height: 2.75rem;
   }

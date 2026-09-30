@@ -12,39 +12,40 @@ type PoemCard = {
   date?: string;
 };
 
-/** Left-to-right order and colors match the reference row of four cards. */
-const STAGE_SLUGS = [
-  "the-weight-of-words",
-  "chakki-dreams",
-  "words-that-speak-beyond-silence",
-  "whispers-in-the-tea-garden",
+const ROW_SIZE = 4;
+
+const CARD_THEMES = [
+  { bg: "#e0ede2", ink: "#1c3328", peg: "heart" as const, doodle: "hearts" as const },
+  { bg: "#d9e4f5", ink: "#1a2d42", peg: "star" as const, doodle: "branch" as const },
+  { bg: "#e8dde5", ink: "#3a2230", peg: "flower" as const, doodle: "hearts" as const },
+  { bg: "#f2e8d4", ink: "#2a2218", peg: "flower" as const, doodle: "leaf" as const },
 ];
 
-const STAGE_THEMES = [
-  { bg: "#e0ede2", ink: "#1c3328", peg: "heart" as const, doodle: "hearts" as const, tilt: 1.05, drop: 10 },
-  { bg: "#d9e4f5", ink: "#1a2d42", peg: "star" as const, doodle: "branch" as const, tilt: -0.85, drop: 10 },
-  { bg: "#e8dde5", ink: "#3a2230", peg: "flower" as const, doodle: "hearts" as const, tilt: 0.9, drop: 8 },
-  { bg: "#f2e8d4", ink: "#2a2218", peg: "flower" as const, doodle: "leaf" as const, tilt: -1.5, drop: 0 },
+const COL_LAYOUT = [
+  { tilt: 1.05, drop: 10 },
+  { tilt: -0.85, drop: 10 },
+  { tilt: 0.9, drop: 8 },
+  { tilt: -1.5, drop: 0 },
 ];
 
-function cardPreview(poem: PoemCard) {
-  if (poem.slug === "words-that-speak-beyond-silence") {
-    return poemPreview(poem.body, 5);
+function chunkRows(items: PoemCard[]) {
+  const rows: PoemCard[][] = [];
+  for (let i = 0; i < items.length; i += ROW_SIZE) {
+    rows.push(items.slice(i, i + ROW_SIZE));
   }
-  return poemPreview(poem.body, 4);
+  return rows;
 }
 
-function pickStagePoems(poems: PoemCard[]) {
-  const picked: PoemCard[] = [];
-  for (const slug of STAGE_SLUGS) {
-    const match = poems.find((poem) => poem.slug === slug);
-    if (match) picked.push(match);
-  }
-  for (const poem of poems) {
-    if (picked.some((item) => item.id === poem.id)) continue;
-    picked.push(poem);
-  }
-  return picked;
+function themeFor(globalIndex: number, colIndex: number, rowLength: number) {
+  const palette = CARD_THEMES[globalIndex % CARD_THEMES.length];
+  const layoutIndex = rowLength === 1 ? 3 : colIndex % COL_LAYOUT.length;
+  const layout = COL_LAYOUT[layoutIndex];
+  return { ...palette, ...layout };
+}
+
+function cardPreview(poem: PoemCard) {
+  const limit = poem.title.length > 28 ? 5 : 4;
+  return poemPreview(poem.body, limit);
 }
 
 function PegArt({ kind }: { kind: "flower" | "heart" | "star" }) {
@@ -124,7 +125,7 @@ function HangingNote({
   theme,
 }: {
   poem: PoemCard;
-  theme: (typeof STAGE_THEMES)[number];
+  theme: (typeof CARD_THEMES)[number] & { tilt: number; drop: number };
 }) {
   return (
     <Link
@@ -148,10 +149,26 @@ function HangingNote({
   );
 }
 
+function RopeCurve() {
+  return (
+    <svg className="line-rope-curve" viewBox="0 0 1400 58" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M 16 29 C 350 54, 1050 54, 1384 29" fill="none" stroke="#9a7348" strokeWidth="7" strokeLinecap="round" />
+      <path
+        d="M 16 26 C 350 50, 1050 50, 1384 26"
+        fill="none"
+        stroke="#c4a574"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        opacity="0.55"
+      />
+    </svg>
+  );
+}
+
 export function Clothesline({ poems }: { poems: PoemCard[] }) {
   if (poems.length === 0) return null;
 
-  const stagePoems = pickStagePoems(poems);
+  const rows = chunkRows(poems);
 
   return (
     <section className="line-scene" aria-label="Poems on a line">
@@ -162,27 +179,20 @@ export function Clothesline({ poems }: { poems: PoemCard[] }) {
       </div>
 
       <div className="line-scene-inner">
-        <svg className="line-rope-curve" viewBox="0 0 1400 58" preserveAspectRatio="none" aria-hidden="true">
-          <path
-            d="M 16 29 C 350 54, 1050 54, 1384 29"
-            fill="none"
-            stroke="#9a7348"
-            strokeWidth="7"
-            strokeLinecap="round"
-          />
-          <path
-            d="M 16 26 C 350 50, 1050 50, 1384 26"
-            fill="none"
-            stroke="#c4a574"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            opacity="0.55"
-          />
-        </svg>
-
-        <div className={`line-hangers line-hangers-${Math.min(stagePoems.length, 4)}`}>
-          {stagePoems.map((poem, index) => (
-            <HangingNote key={poem.id} poem={poem} theme={STAGE_THEMES[index % STAGE_THEMES.length]} />
+        <div className="line-scene-stack">
+          {rows.map((row, rowIndex) => (
+            <div key={`row-${rowIndex}`} className="line-row">
+              <RopeCurve />
+              <div className={`line-hangers line-hangers-${row.length}`}>
+                {row.map((poem, colIndex) => (
+                  <HangingNote
+                    key={poem.id}
+                    poem={poem}
+                    theme={themeFor(rowIndex * ROW_SIZE + colIndex, colIndex, row.length)}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
