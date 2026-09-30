@@ -11,9 +11,8 @@ const config: Config = {
         "ink-soft": "#3a342c",
         muted: "#6d655c",
         line: "#e4dccf",
-        accent: "#16382c",
-        "accent-soft": "#e7f0ea",
-        mark: "#e2ff4d",
+        accent: "#b4532a",
+        "accent-soft": "#f4e6dc",
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Iowan Old Style", "Palatino Linotype", "Palatino", "serif"],

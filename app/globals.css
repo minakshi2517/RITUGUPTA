@@ -9,9 +9,8 @@
   --ink-soft: #3a342c;
   --muted: #6d655c;
   --line: rgba(20, 18, 16, 0.14);
-  --accent: #16382c;
-  --accent-soft: #e7f0ea;
-  --mark: #e2ff4d;
+  --accent: #b4532a;
+  --accent-soft: #f4e6dc;
   --on-dark: #f7f3ea;
   --on-dark-muted: #cfc6b8;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -34,7 +33,7 @@
   }
 
   ::selection {
-    background: var(--mark);
+    background: var(--accent-soft);
     color: var(--ink);
   }
 
@@ -76,20 +75,10 @@ body::before {
 .label {
   font-family: var(--font-sans), sans-serif;
   font-size: 0.72rem;
-  font-weight: 560;
+  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink);
-}
-
-.label::before {
-  content: "";
-  display: inline-block;
-  width: 0.42rem;
-  height: 0.42rem;
-  margin-right: 0.5rem;
-  background: var(--mark);
-  transform: translateY(-1px);
+  color: var(--muted);
 }
 
 .hero-title {
@@ -98,15 +87,6 @@ body::before {
   font-size: clamp(3.15rem, 7.6vw, 7.5rem);
   line-height: 0.9;
   letter-spacing: -0.035em;
-}
-
-.hero-title .italic,
-.section-title .italic {
-  display: inline-block;
-  background-image: linear-gradient(var(--mark), var(--mark));
-  background-repeat: no-repeat;
-  background-position: 0 86%;
-  background-size: 100% 0.32em;
 }
 
 .section-title {
@@ -143,15 +123,12 @@ body::before {
   transition: transform 0.45s var(--ease);
 }
 
-.arrow-link:hover .arrow {
-  transform: translateX(6px);
+.arrow-link:hover {
+  color: var(--accent);
 }
 
-.arrow-link:hover {
-  background-image: linear-gradient(var(--mark), var(--mark));
-  background-repeat: no-repeat;
-  background-position: 0 78%;
-  background-size: 100% 0.38em;
+.arrow-link:hover .arrow {
+  transform: translateX(6px);
 }
 
 .home-open {
@@ -226,8 +203,8 @@ body::before {
   left: 0;
   bottom: -0.35rem;
   width: 100%;
-  height: 3px;
-  background: var(--mark);
+  height: 1px;
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.45s var(--ease);
@@ -309,7 +286,6 @@ body::before {
 
 .hero-portrait {
   aspect-ratio: 4 / 5;
-  box-shadow: 14px 14px 0 var(--mark);
 }
 
 .stills {
@@ -439,20 +415,10 @@ body::before {
 .currently dt {
   font-family: var(--font-sans), sans-serif;
   font-size: 0.68rem;
-  font-weight: 560;
+  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink);
-}
-
-.currently dt::before {
-  content: "";
-  display: inline-block;
-  width: 0.42rem;
-  height: 0.42rem;
-  margin-right: 0.5rem;
-  background: var(--mark);
-  transform: translateY(-1px);
+  color: var(--accent);
 }
 
 .currently dd {
