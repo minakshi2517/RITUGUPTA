@@ -6,7 +6,7 @@ export function defaultSettings(now = new Date().toISOString()): SiteSettings {
   return {
     authorName: "Ritu Gupta Garg",
     descriptor: "Author · Poet · Songwriter · Translator",
-    heroStatement: "through darkness,\nto one's own light.",
+    heroStatement: "Through darkness,\nTo one's own light.",
     heroIntro:
       "I weave words across languages and cultures, exploring identity, heritage, and the quiet moments that shape a life.",
     profileImage: "",
@@ -43,7 +43,7 @@ export function defaultSettings(now = new Date().toISOString()): SiteSettings {
     contactHeading: "Have something to say?",
     contactIntro: "A note is enough. Write as you would to a person.",
     booksIntro: "The shelf, as it stands.",
-    poetryIntro: "for the things\nthat needed words.",
+    poetryIntro: "For the things\nThat needed words.",
     writingIntro: "An independent record of longer pieces.",
     listenIntro: "Songs, readings, and whatever is worth hearing twice.",
     linksIntro: "The other rooms.",

@@ -120,7 +120,7 @@ export function HomeView({
           <div className="grid items-end gap-10 border-t border-ink pt-8 md:grid-cols-12">
             <h2 className="section-title md:col-span-7">
               The shelf
-              <span className="block italic font-light">is still being set.</span>
+              <span className="block italic">Is still being set.</span>
             </h2>
             <p className="quiet md:col-span-4">A cover will take this space when a book is placed here.</p>
           </div>
