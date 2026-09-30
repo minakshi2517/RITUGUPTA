@@ -828,6 +828,119 @@ body::before {
   opacity: 0;
 }
 
+.line-wrap {
+  position: relative;
+  margin: 3.5rem -4vw 2rem;
+  padding: 1.6rem 0 2.2rem;
+}
+
+.line-rope {
+  position: absolute;
+  top: 2.15rem;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: 8px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #c4a574 0 10px,
+      #b08a58 10px 18px,
+      #d4bc8e 18px 24px
+    );
+  box-shadow: 0 2px 0 rgba(90, 60, 20, 0.12);
+}
+
+.line-window {
+  overflow: hidden;
+}
+
+.line-move {
+  display: flex;
+  width: max-content;
+  gap: 1.35rem;
+  padding: 2.85rem 1.5rem 0.5rem;
+  animation: line-drift linear infinite;
+}
+
+.line-window:hover .line-move {
+  animation-play-state: paused;
+}
+
+@keyframes line-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.note-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 17.5rem;
+  min-height: 14.5rem;
+  flex-shrink: 0;
+  padding: 1.35rem 1.2rem 1.2rem;
+  box-shadow: 0 10px 22px rgba(20, 18, 16, 0.08);
+}
+
+.peg {
+  position: absolute;
+  top: -1.85rem;
+  left: 50%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  line-height: 1;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 0 rgba(20, 18, 16, 0.12);
+}
+
+.peg-flower {
+  background: #f3efe4;
+  color: #7a5a28;
+}
+
+.peg-heart {
+  background: #3f5c3a;
+  color: #f7f3ea;
+}
+
+.peg-star {
+  background: #e0b44e;
+  color: #3b2f16;
+}
+
+.note-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.note-title {
+  font-family: var(--font-serif), serif;
+  font-size: 1.45rem;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.note-body {
+  display: block;
+  margin-top: 0.9rem;
+  white-space: pre-wrap;
+  font-family: var(--font-reading), serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
 .skip {
   position: absolute;
   left: 1rem;
@@ -921,6 +1034,16 @@ body::before {
     height: auto;
     margin-top: 1rem;
     transform: none !important;
+  }
+
+  .line-move {
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+  }
+
+  .line-window {
+    overflow: visible;
   }
 }
 
