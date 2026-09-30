@@ -12,19 +12,27 @@ type PoemCard = {
   date?: string;
 };
 
+/** Left-to-right order and colors match the reference row of four cards. */
 const STAGE_SLUGS = [
-  "whispers-in-the-tea-garden",
   "the-weight-of-words",
   "chakki-dreams",
   "words-that-speak-beyond-silence",
+  "whispers-in-the-tea-garden",
 ];
 
 const STAGE_THEMES = [
-  { bg: "#efe2c8", ink: "#2a2218", peg: "flower" as const, doodle: "leaf" as const, tilt: -1.5, drop: 0 },
-  { bg: "#d2e8d8", ink: "#1c3328", peg: "heart" as const, doodle: "hearts" as const, tilt: 1.05, drop: 10 },
-  { bg: "#d8e2ef", ink: "#1a2d42", peg: "star" as const, doodle: "branch" as const, tilt: -0.85, drop: 10 },
-  { bg: "#e8dde5", ink: "#3a2230", peg: "flower" as const, doodle: "hearts" as const, tilt: 1.15, drop: 0 },
+  { bg: "#e0ede2", ink: "#1c3328", peg: "heart" as const, doodle: "hearts" as const, tilt: 1.05, drop: 10 },
+  { bg: "#d9e4f5", ink: "#1a2d42", peg: "star" as const, doodle: "branch" as const, tilt: -0.85, drop: 10 },
+  { bg: "#e8dde5", ink: "#3a2230", peg: "flower" as const, doodle: "hearts" as const, tilt: 0.9, drop: 8 },
+  { bg: "#f2e8d4", ink: "#2a2218", peg: "flower" as const, doodle: "leaf" as const, tilt: -1.5, drop: 0 },
 ];
+
+function cardPreview(poem: PoemCard) {
+  if (poem.slug === "words-that-speak-beyond-silence") {
+    return poemPreview(poem.body, 5);
+  }
+  return poemPreview(poem.body, 4);
+}
 
 function pickStagePoems(poems: PoemCard[]) {
   const picked: PoemCard[] = [];
@@ -121,7 +129,7 @@ function HangingNote({
   return (
     <Link
       href={`/poetry/${poem.slug}`}
-      className="line-note"
+      className={`line-note${poem.title.length > 28 ? " line-note-long" : ""}`}
       style={{
         background: theme.bg,
         color: theme.ink,
@@ -134,7 +142,7 @@ function HangingNote({
         <span className="line-note-cat">{poem.category || "Poem"}</span>
       </span>
       <span className="line-note-rule" aria-hidden="true" />
-      {poem.body ? <span className="line-note-body">{poemPreview(poem.body, 4)}</span> : null}
+      {poem.body ? <span className="line-note-body">{cardPreview(poem)}</span> : null}
       <Doodle kind={theme.doodle} />
     </Link>
   );
