@@ -36,48 +36,69 @@ export function HomeView({
   const buy = book?.amazonUrl || book?.purchaseLinks[0]?.url || "";
   const portrait = settings.profileImage;
   const subscribeHref = settings.substackUrl || "/contact";
+  const roles = settings.descriptor
+    .split(/[·|,/]/)
+    .map((role) => role.trim())
+    .filter(Boolean);
+  const nameParts = settings.authorName.trim().split(/\s+/);
+  const givenName = nameParts[0] || settings.authorName;
+  const familyName = nameParts.slice(1).join(" ");
 
   return (
     <>
-      <section className="home-open">
-        <div className="shell grid items-end gap-12 pb-16 pt-14 md:pb-20 md:pt-20 lg:grid-cols-12 lg:gap-8 lg:pb-24 lg:pt-24">
-          <div className="lg:col-span-7">
-            <p className="label">{settings.descriptor}</p>
-            <p className="home-name">{settings.authorName}</p>
-            <h1 className="hero-title mt-6 text-balance">
-              <Lines text={settings.heroStatement} italicLast />
+      <section className="home-hero">
+        <div className="shell home-hero-inner">
+          <div className="home-hero-copy">
+            {roles.length > 0 ? (
+              <ul className="hero-roles">
+                {roles.map((role) => (
+                  <li key={role}>{role}</li>
+                ))}
+              </ul>
+            ) : null}
+            <h1 className="hero-name">
+              <span className="block">{givenName}</span>
+              {familyName ? <span className="block italic">{familyName}</span> : null}
             </h1>
-            <div className="mt-10 grid items-end gap-8 md:grid-cols-[minmax(0,28rem)_auto] md:gap-12">
-              <p className="hero-intro max-w-md text-lg leading-relaxed">{settings.heroIntro}</p>
-              <div className="flex flex-wrap gap-x-8">
-                <ArrowLink href={settings.ctaPrimaryHref}>{settings.ctaPrimaryLabel}</ArrowLink>
-                <ArrowLink href={settings.ctaSecondaryHref}>{settings.ctaSecondaryLabel}</ArrowLink>
-              </div>
+            <p className="hero-line">
+              <Lines text={settings.heroStatement} italicLast />
+            </p>
+            {settings.heroIntro ? <p className="hero-intro">{settings.heroIntro}</p> : null}
+            <div className="hero-actions">
+              <ArrowLink href={settings.ctaPrimaryHref}>{settings.ctaPrimaryLabel}</ArrowLink>
+              <ArrowLink href={settings.ctaSecondaryHref}>{settings.ctaSecondaryLabel}</ArrowLink>
             </div>
           </div>
-          <div className="lg:col-span-5">
-            <Portrait className="portrait-on-dark hero-portrait" src={portrait} name={settings.authorName} />
-          </div>
-        </div>
-      </section>
 
-      <section className="shell mt-16 md:mt-24">
-        <div className="border-t border-ink pt-6">
-          <h2 className="label text-ink">Currently</h2>
+          <div className="home-hero-stage">
+            <div className="hero-wash" aria-hidden="true" />
+            <figure className="hero-polaroid hero-polaroid-main">
+              <span className="clip-tape" aria-hidden="true" />
+              <Portrait src={portrait} name={settings.authorName} />
+            </figure>
+            <figure className="hero-polaroid hero-polaroid-side">
+              <span className="clip-tape" aria-hidden="true" />
+              <img src="/gallery/library.jpg" alt="" />
+            </figure>
+          </div>
+
+          <div className="home-hero-now">
+            <h2 className="label text-ink">Currently</h2>
+            <dl className="currently mt-5 grid sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                ["Writing", settings.currentlyWriting],
+                ["Reading", settings.currentlyReading],
+                ["Listening", settings.currentlyListening],
+                ["Publishing", settings.currentlyPublishing],
+              ].map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value || "—"}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
-        <dl className="currently mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            ["Writing", settings.currentlyWriting],
-            ["Reading", settings.currentlyReading],
-            ["Listening", settings.currentlyListening],
-            ["Publishing", settings.currentlyPublishing],
-          ].map(([label, value]) => (
-            <div key={label}>
-              <dt>{label}</dt>
-              <dd>{value || "—"}</dd>
-            </div>
-          ))}
-        </dl>
       </section>
 
       <section className="shell mt-20 md:mt-28" aria-label="Photographs">

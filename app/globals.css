@@ -131,36 +131,181 @@ body::before {
   transform: translateX(6px);
 }
 
-.home-open {
-  background: var(--ink);
-  color: var(--on-dark);
+.home-hero {
+  position: relative;
+  overflow: clip;
+  background:
+    radial-gradient(1100px 560px at 92% 8%, #ead7c8 0%, transparent 58%),
+    radial-gradient(820px 420px at 4% 92%, #d7e4d6 0%, transparent 54%),
+    var(--paper);
 }
 
-.home-open .label,
-.home-open .hero-intro {
-  color: var(--on-dark-muted);
+.home-hero-inner {
+  display: grid;
+  grid-template-areas:
+    "stage"
+    "copy"
+    "now";
+  gap: 2rem;
+  padding: 1.35rem 0 2.4rem;
 }
 
-.home-open .hero-title,
-.home-open .home-name {
-  color: var(--on-dark);
+@media (min-width: 1024px) {
+  .home-hero-inner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
+    grid-template-areas:
+      "copy stage"
+      "now now";
+    align-items: center;
+    column-gap: 3.5rem;
+    row-gap: 2.75rem;
+    padding: 1.75rem 0 3rem;
+  }
 }
 
-.home-open .arrow-link {
-  color: var(--on-dark);
+.home-hero-copy {
+  grid-area: copy;
 }
 
-.home-name {
-  margin-top: 1.25rem;
+.home-hero-stage {
+  grid-area: stage;
+  position: relative;
+  min-height: 22.5rem;
+}
+
+.home-hero-now {
+  grid-area: now;
+}
+
+.hero-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.hero-roles li {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.38rem 0.72rem;
+}
+
+.hero-roles li:nth-child(1) {
+  background: #ead7c8;
+  color: #3d2418;
+}
+
+.hero-roles li:nth-child(2) {
+  background: #d7e4d6;
+  color: #1c3328;
+}
+
+.hero-roles li:nth-child(3) {
+  background: #d4dde8;
+  color: #1c2d40;
+}
+
+.hero-roles li:nth-child(4) {
+  background: #e4d4dc;
+  color: #3a2230;
+}
+
+.hero-roles li:nth-child(5) {
+  background: #eadfc4;
+  color: #3b2f16;
+}
+
+.hero-name {
+  margin-top: 1.15rem;
   font-family: var(--font-serif), serif;
-  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
-  font-style: italic;
-  letter-spacing: -0.02em;
+  font-weight: 460;
+  font-size: clamp(3.35rem, 8.6vw, 6.4rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
 }
 
-.portrait-on-dark.portrait-empty {
-  background: #2a2420;
-  color: var(--on-dark);
+.hero-line {
+  margin-top: 1.35rem;
+  max-width: 22rem;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--ink-soft);
+}
+
+.hero-intro {
+  margin-top: 1.1rem;
+  max-width: 28rem;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero-wash {
+  position: absolute;
+  inset: 14% 2% 10% 22%;
+  background: #e4d4dc;
+}
+
+.hero-polaroid {
+  position: absolute;
+  background: #fffdf8;
+  padding: 0.5rem 0.5rem 1.45rem;
+  box-shadow: 0 16px 36px rgba(20, 18, 16, 0.16);
+  transition: transform 0.55s var(--ease);
+}
+
+.hero-polaroid .portrait-frame {
+  aspect-ratio: 4 / 5;
+  background: #efe6d6;
+}
+
+.hero-polaroid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.hero-polaroid-main {
+  width: min(70%, 19.5rem);
+  left: 2%;
+  top: 0;
+  z-index: 2;
+  transform: rotate(-5deg);
+}
+
+.hero-polaroid-side {
+  width: min(40%, 10.75rem);
+  right: 0;
+  bottom: 2%;
+  z-index: 3;
+  padding: 0.38rem 0.38rem 1.05rem;
+  transform: rotate(8deg);
+}
+
+.hero-polaroid-main:hover {
+  transform: rotate(-3deg) translateY(-6px);
+}
+
+.hero-polaroid-side:hover {
+  transform: rotate(6deg) translateY(-6px);
+}
+
+@media (min-width: 1024px) {
+  .home-hero-stage {
+    min-height: 34rem;
+  }
 }
 
 .ink-band {
@@ -284,9 +429,6 @@ body::before {
   transform: scale(1.03);
 }
 
-.hero-portrait {
-  aspect-ratio: 4 / 5;
-}
 
 .stills {
   display: grid;
