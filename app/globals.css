@@ -1175,7 +1175,7 @@ body::before {
 .line-scene-inner {
   position: relative;
   z-index: 1;
-  width: min(1180px, calc(100% - 2.5rem));
+  width: min(1360px, calc(100% - 1.75rem));
   margin: 0 auto;
   padding: 3.35rem 0 2.75rem;
 }
@@ -1192,21 +1192,27 @@ body::before {
 
 .line-hangers {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.75rem, 4.2vw, 3.25rem);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.85rem, 1.8vw, 1.35rem);
   align-items: start;
-  padding: 3.15rem 0.35rem 0;
+  padding: 3.15rem 0.2rem 0;
 }
 
 .line-hangers-1 {
-  grid-template-columns: minmax(0, 19.75rem);
+  grid-template-columns: minmax(0, 18rem);
   justify-content: center;
 }
 
 .line-hangers-2 {
-  grid-template-columns: repeat(2, minmax(0, 19.75rem));
+  grid-template-columns: repeat(2, minmax(0, 18rem));
   justify-content: center;
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.line-hangers-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 980px;
+  margin-inline: auto;
 }
 
 .line-note {
@@ -1214,14 +1220,14 @@ body::before {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 19.75rem;
-  min-height: 16.75rem;
+  max-width: none;
+  min-height: 15.75rem;
   margin: 0 auto;
-  padding: 1.55rem 1.45rem 1.85rem;
+  padding: 1.35rem 1.15rem 1.55rem;
   border-radius: 7px;
   box-shadow: 0 14px 28px rgba(35, 28, 20, 0.14);
   transform-origin: 50% 0;
-  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+  transition: box-shadow 0.45s var(--ease);
 }
 
 .line-note:hover {
@@ -1268,9 +1274,9 @@ body::before {
 .line-note-title {
   flex: 1;
   font-family: var(--font-serif), serif;
-  font-size: clamp(1.35rem, 1.55vw, 1.62rem);
+  font-size: clamp(1.05rem, 1.05vw, 1.38rem);
   font-weight: 460;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
@@ -1294,11 +1300,11 @@ body::before {
 
 .line-note-body {
   display: block;
-  margin-top: 0.95rem;
+  margin-top: 0.85rem;
   white-space: pre-wrap;
   font-family: var(--font-reading), serif;
-  font-size: 0.94rem;
-  line-height: 1.58;
+  font-size: 0.82rem;
+  line-height: 1.52;
 }
 
 .note-doodle {
@@ -1371,16 +1377,23 @@ body::before {
   }
 }
 
-@media (max-width: 900px) {
-  .line-hangers {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-    max-width: 20rem;
-    margin-inline: auto;
+@media (max-width: 1024px) {
+  .line-hangers,
+  .line-hangers-3,
+  .line-hangers-4 {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    padding-bottom: 0.75rem;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .line-hangers-2 {
-    grid-template-columns: 1fr;
+  .line-note {
+    min-width: 15.5rem;
+    max-width: 15.5rem;
+    scroll-snap-align: start;
   }
 
   .line-scene-inner {

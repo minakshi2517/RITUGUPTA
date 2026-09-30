@@ -12,12 +12,18 @@ type PoemCard = {
   date?: string;
 };
 
-const STAGE_SLUGS = ["whispers-in-the-tea-garden", "the-weight-of-words", "chakki-dreams"];
+const STAGE_SLUGS = [
+  "whispers-in-the-tea-garden",
+  "the-weight-of-words",
+  "chakki-dreams",
+  "words-that-speak-beyond-silence",
+];
 
 const STAGE_THEMES = [
-  { bg: "#efe2c8", ink: "#2a2218", peg: "flower" as const, doodle: "leaf" as const, tilt: -1.6, drop: 0 },
-  { bg: "#d2e8d8", ink: "#1c3328", peg: "heart" as const, doodle: "hearts" as const, tilt: 1.1, drop: 11 },
-  { bg: "#d8e2ef", ink: "#1a2d42", peg: "star" as const, doodle: "branch" as const, tilt: -0.9, drop: 0 },
+  { bg: "#efe2c8", ink: "#2a2218", peg: "flower" as const, doodle: "leaf" as const, tilt: -1.5, drop: 0 },
+  { bg: "#d2e8d8", ink: "#1c3328", peg: "heart" as const, doodle: "hearts" as const, tilt: 1.05, drop: 10 },
+  { bg: "#d8e2ef", ink: "#1a2d42", peg: "star" as const, doodle: "branch" as const, tilt: -0.85, drop: 10 },
+  { bg: "#e8dde5", ink: "#3a2230", peg: "flower" as const, doodle: "hearts" as const, tilt: 1.15, drop: 0 },
 ];
 
 function pickStagePoems(poems: PoemCard[]) {
@@ -26,11 +32,9 @@ function pickStagePoems(poems: PoemCard[]) {
     const match = poems.find((poem) => poem.slug === slug);
     if (match) picked.push(match);
   }
-  if (picked.length >= 3) return picked.slice(0, 3);
   for (const poem of poems) {
     if (picked.some((item) => item.id === poem.id)) continue;
     picked.push(poem);
-    if (picked.length === 3) break;
   }
   return picked;
 }
@@ -140,9 +144,6 @@ export function Clothesline({ poems }: { poems: PoemCard[] }) {
   if (poems.length === 0) return null;
 
   const stagePoems = pickStagePoems(poems);
-  const stageIds = new Set(stagePoems.map((poem) => poem.id));
-  const rest = poems.filter((poem) => !stageIds.has(poem.id));
-  const loop = rest.length > 1 ? [...rest, ...rest] : rest;
 
   return (
     <section className="line-scene" aria-label="Poems on a line">
@@ -153,16 +154,16 @@ export function Clothesline({ poems }: { poems: PoemCard[] }) {
       </div>
 
       <div className="line-scene-inner">
-        <svg className="line-rope-curve" viewBox="0 0 1200 56" preserveAspectRatio="none" aria-hidden="true">
+        <svg className="line-rope-curve" viewBox="0 0 1400 58" preserveAspectRatio="none" aria-hidden="true">
           <path
-            d="M 24 30 C 320 52, 880 52, 1176 30"
+            d="M 16 29 C 350 54, 1050 54, 1384 29"
             fill="none"
             stroke="#9a7348"
             strokeWidth="7"
             strokeLinecap="round"
           />
           <path
-            d="M 24 27 C 320 48, 880 48, 1176 27"
+            d="M 16 26 C 350 50, 1050 50, 1384 26"
             fill="none"
             stroke="#c4a574"
             strokeWidth="2.5"
@@ -171,41 +172,12 @@ export function Clothesline({ poems }: { poems: PoemCard[] }) {
           />
         </svg>
 
-        <div className={`line-hangers line-hangers-${stagePoems.length}`}>
+        <div className={`line-hangers line-hangers-${Math.min(stagePoems.length, 4)}`}>
           {stagePoems.map((poem, index) => (
             <HangingNote key={poem.id} poem={poem} theme={STAGE_THEMES[index % STAGE_THEMES.length]} />
           ))}
         </div>
       </div>
-
-      {loop.length > 0 ? (
-        <div className={`line-marquee-wrap${rest.length === 1 ? " line-marquee-static" : ""}`}>
-          <div className="line-marquee-window">
-            <div className="line-marquee-track" style={{ animationDuration: `${Math.max(32, loop.length * 8)}s` }}>
-              {loop.map((poem, index) => {
-                const theme = STAGE_THEMES[index % STAGE_THEMES.length];
-                return (
-                  <Link
-                    key={`${poem.id}-${index}`}
-                    href={`/poetry/${poem.slug}`}
-                    className="line-note line-note-mini"
-                    style={{ background: theme.bg, color: theme.ink, transform: `rotate(${theme.tilt * 0.6}deg)` }}
-                  >
-                    <PegArt kind={theme.peg} />
-                    <span className="line-note-head">
-                      <span className="line-note-title">{poem.title}</span>
-                      <span className="line-note-cat">{poem.category || "Poem"}</span>
-                    </span>
-                    <span className="line-note-rule" aria-hidden="true" />
-                    {poem.body ? <span className="line-note-body">{poemPreview(poem.body, 3)}</span> : null}
-                    <Doodle kind={theme.doodle} />
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      ) : null}
     </section>
   );
 }
