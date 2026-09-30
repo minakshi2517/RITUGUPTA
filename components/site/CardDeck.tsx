@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { RichText } from "@/components/site/RichText";
+import { linkRel } from "@/lib/utils";
 
 export type DeckCard = {
   id: string;
@@ -91,6 +92,25 @@ export function CardDeck({ cards }: { cards: DeckCard[] }) {
                 <p className="font-serif text-3xl leading-tight italic md:text-4xl">{card.quote.text}</p>
                 {card.quote.attribution ? <footer className="label mt-4">{card.quote.attribution}</footer> : null}
               </blockquote>
+            ) : null}
+            {index === cards.length - 1 ? (
+              <div className="deck-end">
+                <div>
+                  <p className="deck-end-line">The mill still turns.</p>
+                  <p className="mt-4 font-serif text-2xl italic md:text-3xl">Tea · Woke · Chakki</p>
+                  <a
+                    href="https://www.instagram.com/teapoet.ritu_woke.chakki"
+                    className="label mt-5 inline-block"
+                    {...linkRel("https://www.instagram.com/teapoet.ritu_woke.chakki")}
+                  >
+                    teapoet.ritu_woke.chakki
+                  </a>
+                </div>
+                <span className="deck-end-photo">
+                  <span className="clip-tape" aria-hidden="true" />
+                  <img src="/gallery/portrait.jpg" alt="Ritu Gupta Garg" />
+                </span>
+              </div>
             ) : null}
           </article>
         ))}
