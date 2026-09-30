@@ -16,7 +16,13 @@ export function ClickWords() {
     const onClick = (event: MouseEvent) => {
       const target = event.target;
       if (!(target instanceof Element)) return;
-      if (target.closest("a, button, input, textarea, select, label, iframe, summary, [role='button']")) return;
+      if (
+        target.closest(
+          "a, button, input, textarea, select, label, iframe, summary, video, [role='button'], [contenteditable='true']",
+        )
+      ) {
+        return;
+      }
 
       const id = tick + 1;
       tick = id;
@@ -26,7 +32,7 @@ export function ClickWords() {
       setMarks((current) => [...current.slice(-8), mark]);
       window.setTimeout(() => {
         setMarks((current) => current.filter((item) => item.id !== id));
-      }, 1500);
+      }, 1700);
     };
 
     document.addEventListener("click", onClick);
