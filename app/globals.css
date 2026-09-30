@@ -311,9 +311,15 @@ body::before {
   height: 100%;
 }
 
+.quiet-still {
+  max-width: 16rem;
+  justify-self: end;
+}
+
 .quiet-still img {
   aspect-ratio: 4 / 5;
-  height: 32rem;
+  height: auto;
+  max-height: 18rem;
 }
 
 .card-deck {
