@@ -1,53 +1,73 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const WORDS = ["author", "poet", "songwriter", "translator", "educator"];
 
-type Mark = { id: number; x: number; y: number; word: string };
+function isBlankClick(target: EventTarget | null) {
+  if (!(target instanceof Element)) return false;
+  if (target.closest(".click-words")) return false;
+  if (
+    target.closest(
+      "a, button, input, textarea, select, label, iframe, summary, video, [role='button'], [contenteditable='true']",
+    )
+  ) {
+    return false;
+  }
+  return true;
+}
 
-export function ClickWords() {
-  const [marks, setMarks] = useState<Mark[]>([]);
-
+export default function ClickWords() {
   useEffect(() => {
+    const layer = document.createElement("div");
+    layer.className = "click-words";
+    layer.setAttribute("aria-hidden", "true");
+    document.body.appendChild(layer);
+
     let next = 0;
-    let tick = 0;
+    let last = { x: 0, y: 0, t: 0 };
 
-    const onClick = (event: MouseEvent) => {
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-      if (
-        target.closest(
-          "a, button, input, textarea, select, label, iframe, summary, video, [role='button'], [contenteditable='true']",
-        )
-      ) {
-        return;
-      }
+    const spawn = (x: number, y: number) => {
+      const now = Date.now();
+      if (now - last.t < 320 && Math.hypot(x - last.x, y - last.y) < 8) return;
+      last = { x, y, t: now };
 
-      const id = tick + 1;
-      tick = id;
       const word = WORDS[next % WORDS.length];
       next += 1;
-      const mark = { id, x: event.clientX, y: event.clientY, word };
-      setMarks((current) => [...current.slice(-8), mark]);
+
+      const mark = document.createElement("span");
+      mark.className = "click-word";
+      mark.textContent = word;
+      mark.style.left = `${x}px`;
+      mark.style.top = `${y}px`;
+      layer.appendChild(mark);
+
       window.setTimeout(() => {
-        setMarks((current) => current.filter((item) => item.id !== id));
-      }, 1700);
+        mark.remove();
+      }, 1800);
     };
 
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.button !== 0) return;
+      if (!isBlankClick(event.target)) return;
+      spawn(event.clientX, event.clientY);
+    };
+
+    const onClick = (event: MouseEvent) => {
+      if (event.button !== 0) return;
+      if (!isBlankClick(event.target)) return;
+      spawn(event.clientX, event.clientY);
+    };
+
+    document.addEventListener("pointerdown", onPointerDown, true);
+    document.addEventListener("click", onClick, true);
+
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown, true);
+      document.removeEventListener("click", onClick, true);
+      layer.remove();
+    };
   }, []);
 
-  if (marks.length === 0) return null;
-
-  return (
-    <div className="click-words" aria-hidden="true">
-      {marks.map((mark) => (
-        <span key={mark.id} className="click-word" style={{ left: mark.x, top: mark.y }}>
-          {mark.word}
-        </span>
-      ))}
-    </div>
-  );
+  return null;
 }

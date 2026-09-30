@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Newsreader, Outfit } from "next/font/google";
+import { ClickWordsLoader } from "@/components/site/ClickWordsLoader";
 import { getSettings } from "@/lib/data";
 import "./globals.css";
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#content" className="skip" suppressHydrationWarning>
           Skip to content
         </a>
+        <ClickWordsLoader />
         {children}
       </body>
     </html>

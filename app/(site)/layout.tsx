@@ -1,4 +1,3 @@
-import { ClickWords } from "@/components/site/ClickWords";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { getSettings, listLinks } from "@/lib/data";
@@ -20,7 +19,6 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         </div>
       ) : null}
       <Header authorName={settings.authorName} subscribeHref={subscribeHref} subscribeLabel={subscribeLabel} />
-      <ClickWords />
       <main id="content">{children}</main>
       <Footer settings={settings} links={active} />
     </>
