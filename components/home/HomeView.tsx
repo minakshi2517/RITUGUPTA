@@ -137,7 +137,7 @@ export function HomeView({
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             {poem ? (
-              <>
+              <div className="wash-panel wash-2">
                 <p className="label">
                   {poem.title}
                   {poem.date ? ` · ${formatDate(poem.date)}` : ""}
@@ -146,15 +146,15 @@ export function HomeView({
                 <div className="mt-8">
                   <ArrowLink href={`/poetry/${poem.slug}`}>Continue reading</ArrowLink>
                 </div>
-              </>
+              </div>
             ) : (
               <p className="quiet">The poems will be set here, one page at a time.</p>
             )}
             {otherPoems.length > 0 ? (
-              <ul className="mt-12 border-t border-line">
-                {otherPoems.map((item) => (
+              <ul className="mt-4 grid gap-3">
+                {otherPoems.map((item, index) => (
                   <li key={item.id}>
-                    <Link href={`/poetry/${item.slug}`} className="group flex items-baseline justify-between gap-6 py-4">
+                    <Link href={`/poetry/${item.slug}`} className={`wash-panel wash-${((index + 3) % 6) + 1} group flex items-baseline justify-between gap-6`}>
                       <span className="font-serif text-2xl tracking-tight group-hover:italic">{item.title}</span>
                       <span className="label shrink-0">{item.category || formatDate(item.date) || "Poem"}</span>
                     </Link>

@@ -45,9 +45,9 @@ export default async function PoetryPage({
 
       {visible.length === 0 ? <p className="quiet mt-20">The archive is open. The first poem has not been placed yet.</p> : null}
 
-      <div className="mt-16 max-w-3xl">
-        {visible.map((poem) => (
-          <Link key={poem.id} href={`/poetry/${poem.slug}`} className="block border-t border-line py-10 last:border-b">
+      <div className="mt-16 grid max-w-3xl gap-3">
+        {visible.map((poem, index) => (
+          <Link key={poem.id} href={`/poetry/${poem.slug}`} className={`wash-panel wash-${(index % 6) + 1} block`}>
             <div className="flex items-baseline justify-between gap-6">
               <h2 className="font-serif text-4xl tracking-tight md:text-5xl">{poem.title}</h2>
               <span className="label shrink-0">{poem.category || "Poem"}</span>

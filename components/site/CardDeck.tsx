@@ -75,7 +75,7 @@ export function CardDeck({ cards }: { cards: DeckCard[] }) {
         {cards.map((card, index) => (
           <article
             key={card.id}
-            className="deck-card"
+            className={`deck-card wash-${(index % 6) + 1}`}
             style={{
               zIndex: index + 1,
               transform: index === 0 ? "translate3d(0, 0, 0)" : "translate3d(0, 100%, 0)",

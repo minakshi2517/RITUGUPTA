@@ -22,8 +22,8 @@ export default async function BooksPage() {
       {books.length === 0 ? <p className="quiet mt-16">Nothing has been placed on the shelf yet.</p> : null}
 
       <div className="book-shelf">
-        {books.map((book) => (
-          <article key={book.id}>
+        {books.map((book, index) => (
+          <article key={book.id} className={`wash-panel wash-${(index % 6) + 1}`}>
             <Link href={`/books/${book.slug}`} className="cover-link block">
               <Cover src={book.coverImage} title={book.title} alt={`Cover of ${book.title}`} />
             </Link>
@@ -31,7 +31,7 @@ export default async function BooksPage() {
             <h2 className="mt-2 font-serif text-3xl leading-none tracking-tight md:text-4xl">
               <Link href={`/books/${book.slug}`}>{book.title}</Link>
             </h2>
-            {book.subtitle ? <p className="mt-3 max-w-xs font-serif text-xl italic text-ink-soft">{book.subtitle}</p> : null}
+            {book.subtitle ? <p className="mt-3 max-w-xs font-serif text-xl italic opacity-80">{book.subtitle}</p> : null}
             <div className="mt-5">
               <ArrowLink href={`/books/${book.slug}`}>Open the book</ArrowLink>
             </div>

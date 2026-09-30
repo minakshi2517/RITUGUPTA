@@ -333,13 +333,39 @@ body::before {
   inset: 0 0 1.25rem;
   overflow: auto;
   padding: 2rem 1.75rem 2.5rem;
-  background: #f7f4ec;
-  border: 1px solid rgba(22, 19, 15, 0.16);
-  box-shadow: 0 -22px 40px rgba(22, 19, 15, 0.08);
+  border: 0;
+  box-shadow: 0 -22px 40px rgba(20, 18, 16, 0.1);
 }
 
-.deck-card:nth-child(even) {
-  background: #efe8dc;
+.wash-1 { background: #ead7c8; color: #3d2418; }
+.wash-2 { background: #d7e4d6; color: #1c3328; }
+.wash-3 { background: #d4dde8; color: #1c2d40; }
+.wash-4 { background: #e4d4dc; color: #3a2230; }
+.wash-5 { background: #eadfc4; color: #3b2f16; }
+.wash-6 { background: #dce6e2; color: #243832; }
+
+.wash-1 .label,
+.wash-2 .label,
+.wash-3 .label,
+.wash-4 .label,
+.wash-5 .label,
+.wash-6 .label,
+.wash-1 .quiet,
+.wash-2 .quiet,
+.wash-3 .quiet,
+.wash-4 .quiet,
+.wash-5 .quiet,
+.wash-6 .quiet {
+  color: inherit;
+  opacity: 0.62;
+}
+
+.wash-panel {
+  padding: 1.5rem 1.4rem 1.6rem;
+}
+
+.wash-panel .arrow-link {
+  color: inherit;
 }
 
 .substack-card {

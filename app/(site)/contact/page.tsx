@@ -28,7 +28,7 @@ export default async function ContactPage() {
             </div>
           ) : null}
         </div>
-        <div className="lg:col-span-6 lg:col-start-7">
+        <div className="wash-panel wash-1 lg:col-span-6 lg:col-start-7">
           <ContactForm />
         </div>
       </div>
