@@ -22,8 +22,8 @@ export default async function BooksPage() {
       {books.length === 0 ? <p className="quiet mt-16">Nothing has been placed on the shelf yet.</p> : null}
 
       <div className="book-shelf">
-        {books.map((book, index) => (
-          <article key={book.id} className={`wash-panel wash-${(index % 6) + 1}`}>
+        {books.map((book) => (
+          <article key={book.id} className="book-shelf-item">
             <Link href={`/books/${book.slug}`} className="cover-link block">
               <Cover src={book.coverImage} title={book.title} alt={`Cover of ${book.title}`} />
             </Link>

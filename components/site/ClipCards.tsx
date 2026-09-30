@@ -2,22 +2,24 @@ import { linkRel } from "@/lib/utils";
 
 type Entry = { id: string; title: string; url: string; description?: string };
 
-const THEMES = [
-  { bg: "#ead7c8", ink: "#3d2418", clip: "/gallery/writing-desk.jpg" },
-  { bg: "#d7e4d6", ink: "#1c3328", clip: "/gallery/open-book.jpg" },
-  { bg: "#e4d4dc", ink: "#3a2230", clip: "/gallery/portrait.jpg" },
-  { bg: "#d4dde8", ink: "#1c2d40", clip: "/gallery/library.jpg" },
-  { bg: "#eadfc4", ink: "#3b2f16", clip: "/gallery/book-trees.jpg" },
-];
+const CLIPS: Record<string, string> = {
+  substack: "/gallery/writing-desk.jpg",
+  spotify: "/uploads/ram-lalla.jpg",
+  instagram: "/gallery/portrait.jpg",
+  whatsapp: "/gallery/library.jpg",
+  linktree: "/gallery/book-trees.jpg",
+  link: "/gallery/book-trees.jpg",
+};
 
-function pick(title: string, index: number) {
+const ACCENTS = ["#c9a88e", "#9cb8a8", "#a8b4c9", "#b8a0ae", "#c4b896"];
+
+function clipFor(title: string, index: number) {
   const key = title.toLowerCase();
-  if (key.includes("substack")) return { ...THEMES[0], clip: "/gallery/writing-desk.jpg" };
-  if (key.includes("spotify")) return { ...THEMES[1], clip: "/uploads/ram-lalla.jpg" };
-  if (key.includes("instagram")) return { ...THEMES[2], clip: "/gallery/portrait.jpg" };
-  if (key.includes("whatsapp")) return { ...THEMES[3], clip: "/gallery/library.jpg" };
-  if (key.includes("linktree") || key.includes("link")) return { ...THEMES[4], clip: "/gallery/book-trees.jpg" };
-  return THEMES[index % THEMES.length];
+  for (const [needle, src] of Object.entries(CLIPS)) {
+    if (key.includes(needle)) return src;
+  }
+  const fallbacks = ["/gallery/open-book.jpg", "/gallery/vairagya.png", "/gallery/book-trees.jpg"];
+  return fallbacks[index % fallbacks.length];
 }
 
 export function ClipCards({ links }: { links: Entry[] }) {
@@ -26,24 +28,30 @@ export function ClipCards({ links }: { links: Entry[] }) {
   return (
     <div className="clip-grid">
       {links.map((link, index) => {
-        const theme = pick(link.title, index);
+        const accent = ACCENTS[index % ACCENTS.length];
+        const tilt = index % 2 === 0 ? "tilt-left" : "tilt-right";
         return (
           <a
             key={link.id}
             href={link.url}
-            className="clip-card"
-            style={{ background: theme.bg, color: theme.ink }}
+            className="clip-card group"
+            style={{ borderTopColor: accent }}
             {...linkRel(link.url)}
           >
-            <span className={`clip-photo ${index % 2 === 0 ? "tilt-left" : "tilt-right"}`}>
+            <figure className={`clip-card-photo ${tilt}`}>
               <span className="clip-tape" aria-hidden="true" />
-              <img src={theme.clip} alt="" />
-            </span>
-            <span className="clip-title">{link.title}</span>
-            {link.description ? <span className="clip-note">{link.description}</span> : null}
-            <span className="clip-go">
-              Open
-              <span aria-hidden="true"> →</span>
+              <img src={clipFor(link.title, index)} alt="" />
+            </figure>
+            <span className="clip-card-body">
+              <span className="clip-title">{link.title}</span>
+              {link.description ? <span className="clip-note">{link.description}</span> : null}
+              <span className="clip-go">
+                Open
+                <span className="arrow" aria-hidden="true">
+                  {" "}
+                  →
+                </span>
+              </span>
             </span>
           </a>
         );

@@ -45,27 +45,41 @@ export default async function WritingPage({
       ) : null}
 
       {lead ? (
-        <article className="wash-panel wash-2 mt-12">
-          <p className="label">{[lead.category, formatDate(lead.date)].filter(Boolean).join(" · ")}</p>
-          <h2 className="mt-3 font-serif text-5xl leading-[0.95] tracking-tight md:text-6xl">
-            <Link href={`/writing/${lead.slug}`}>{lead.title}</Link>
-          </h2>
-          {lead.excerpt ? <p className="mt-6 max-w-2xl text-xl leading-relaxed">{lead.excerpt}</p> : null}
-          <div className="mt-6">
-            <ArrowLink href={`/writing/${lead.slug}`}>Read</ArrowLink>
+        <article className="journal-lead mt-12">
+          <div className="journal-lead-grid">
+            <div className="journal-lead-copy">
+              <p className="label">{[lead.category, formatDate(lead.date)].filter(Boolean).join(" · ")}</p>
+              <h2 className="mt-3 font-serif text-5xl leading-[0.95] tracking-tight md:text-6xl">
+                <Link href={`/writing/${lead.slug}`}>{lead.title}</Link>
+              </h2>
+              {lead.excerpt ? <p className="mt-6 max-w-xl text-xl leading-relaxed text-ink-soft">{lead.excerpt}</p> : null}
+              <div className="mt-8">
+                <ArrowLink href={`/writing/${lead.slug}`}>Read</ArrowLink>
+              </div>
+            </div>
+            <figure className="journal-lead-photo">
+              <img src="/gallery/book-trees.jpg" alt="" />
+            </figure>
           </div>
         </article>
       ) : null}
 
-      <div className="mt-3 grid gap-3">
-      {rest.map((piece, index) => (
-        <Link key={piece.id} href={`/writing/${piece.slug}`} className={`wash-panel wash-${((index + 2) % 6) + 1} block`}>
-          <span className="label">{formatDate(piece.date) || piece.category}</span>
-          <span className="mt-2 block font-serif text-3xl tracking-tight">{piece.title}</span>
-          {piece.excerpt ? <span className="mt-2 block max-w-2xl opacity-80">{piece.excerpt}</span> : null}
-        </Link>
-      ))}
-      </div>
+      {rest.length > 0 ? (
+        <ul className="journal-list mt-10">
+          {rest.map((piece) => (
+            <li key={piece.id}>
+              <Link href={`/writing/${piece.slug}`} className="journal-row group">
+                <span className="journal-row-meta label">{formatDate(piece.date) || piece.category}</span>
+                <span className="journal-row-main">
+                  <span className="journal-row-title">{piece.title}</span>
+                  {piece.excerpt ? <span className="journal-row-excerpt">{piece.excerpt}</span> : null}
+                </span>
+                <span className="journal-row-go">Read →</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : null}
 
       {filtered.length === 0 && substack.length === 0 ? <p className="quiet mt-16">The journal is ready for its first piece.</p> : null}
 
